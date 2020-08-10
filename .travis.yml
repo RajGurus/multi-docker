@@ -1,6 +1,6 @@
 sudo: required
 language: generic
-service:
+services:
   - docker
 
 before_install:
@@ -15,7 +15,7 @@ after_success:
   - docker build  -t rajgurus/multi-server ./server
   - docker build  -t rajgurus/multi-worker ./worker
   #log in to docker cli
-  echo "$DOCKER_PASSWORD" | docker  login -u "$DOCKER_ID" --password--stdin
+  - echo "$DOCKER_PASSWORD" | docker  login -u "$DOCKER_ID" --password-stdin
   #Take  those images and push them to docker hub
   - docker push rajgurus/multi-client
   - docker push rajgurus/multi-nginx
